@@ -1,0 +1,21 @@
+name: Validate Formulae
+on:
+  pull_request:
+    branches: [main, dev]
+  push:
+    branches: [main]
+
+jobs:
+  audit:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+      - name: Audit formulae
+        run: |
+          brew tap-new flowcore-water/tap --no-git
+          cp -r Formula "$(brew --repository)/Library/Taps/flowcore-water/homebrew-tap/Formula"
+          for f in Formula/*.rb; do
+            brew audit --strict "flowcore-water/tap/$(basename "$f" .rb)"
+          done

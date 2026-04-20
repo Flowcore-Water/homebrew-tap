@@ -14,6 +14,7 @@ jobs:
         uses: Homebrew/actions/setup-homebrew@master
       - name: Audit formulae
         run: |
+          brew untap flowcore-water/tap 2>/dev/null || true
           brew tap-new flowcore-water/tap --no-git
           cp -r Formula "$(brew --repository)/Library/Taps/flowcore-water/homebrew-tap/Formula"
           for f in Formula/*.rb; do

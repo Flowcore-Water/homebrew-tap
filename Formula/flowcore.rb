@@ -1,9 +1,8 @@
 class Flowcore < Formula
   desc "Flowcore Water Operations CLI — unified interface for all Flowcore services"
   homepage "https://github.com/Flowcore-Water/flowcore-mcp"
-  url "https://github.com/Flowcore-Water/flowcore-mcp.git",
-      tag: "v1.0.0",
-      revision: "HEAD"
+  url "https://github.com/Flowcore-Water/flowcore-mcp/archive/refs/tags/v1.0.0.tar.gz"
+  sha256 "17a787dd361bb6e608e73d716131fe30b9b25e4fd706d20b184b7930c9828f5f"
   license "MIT"
 
   depends_on "node@20"

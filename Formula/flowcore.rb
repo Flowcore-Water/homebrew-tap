@@ -16,10 +16,10 @@ end
 class Flowcore < Formula
   desc "Flowcore Water Operations CLI — unified interface for all Flowcore services"
   homepage "https://github.com/Flowcore-Water/flowcore-mcp"
-  url "https://api.github.com/repos/Flowcore-Water/flowcore-mcp/releases/assets/402068376",
+  url "https://api.github.com/repos/Flowcore-Water/flowcore-mcp/releases/assets/420442013",
       using: GitHubPrivateReleaseDownloadStrategy
-  sha256 "17a787dd361bb6e608e73d716131fe30b9b25e4fd706d20b184b7930c9828f5f"
-  version "1.0.0"
+  sha256 "06b28fa3248c83920234d441d2fb0d5f53560cf92efc23e369ed2d1e479c10b1"
+  version "1.0.1"
   license "MIT"
 
   depends_on "node@20"

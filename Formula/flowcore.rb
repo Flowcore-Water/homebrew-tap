@@ -18,8 +18,8 @@ class Flowcore < Formula
   homepage "https://github.com/Flowcore-Water/flowcore-mcp"
   url "https://api.github.com/repos/Flowcore-Water/flowcore-mcp/releases/assets/420442013",
       using: GitHubPrivateReleaseDownloadStrategy
-  sha256 "06b28fa3248c83920234d441d2fb0d5f53560cf92efc23e369ed2d1e479c10b1"
   version "1.0.1"
+  sha256 "06b28fa3248c83920234d441d2fb0d5f53560cf92efc23e369ed2d1e479c10b1"
   license "MIT"
 
   depends_on "node@20"

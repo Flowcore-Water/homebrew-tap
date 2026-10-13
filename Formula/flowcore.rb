@@ -1,20 +1,20 @@
 class GitHubPrivateReleaseDownloadStrategy < CurlDownloadStrategy
   def _fetch(url:, resolved_url:, timeout:)
-    token = ENV.fetch("HOMEBREW_GITHUB_API_TOKEN") {
+    token = ENV.fetch("HOMEBREW_GITHUB_API_TOKEN") do
       raise "Set HOMEBREW_GITHUB_API_TOKEN to install from a private repo"
-    }
+    end
     curl_download(
       url,
       "--header", "Authorization: token #{token}",
       "--header", "Accept: application/octet-stream",
-      to: temporary_path,
-      timeout: timeout,
+      to:      temporary_path,
+      timeout: timeout
     )
   end
 end
 
 class Flowcore < Formula
-  desc "Flowcore Water Operations CLI — unified interface for all Flowcore services"
+  desc "Water operations CLI — unified interface for all Flowcore services"
   homepage "https://github.com/Flowcore-Water/flowcore-mcp"
   url "https://api.github.com/repos/Flowcore-Water/flowcore-mcp/releases/assets/420442013",
       using: GitHubPrivateReleaseDownloadStrategy
@@ -36,13 +36,13 @@ class Flowcore < Formula
     # Create wrapper script
     (bin/"flowcore").write <<~EOS
       #!/bin/bash
-      exec "#{Formula["node@20"].opt_bin}/node" "#{libexec}/dist/cli/index.js" "$@"
+      exec "#{formula_opt_bin("node@20")}/node" "#{libexec}/dist/cli/index.js" "$@"
     EOS
 
     # Create MCP server wrapper
     (bin/"flowcore-mcp").write <<~EOS
       #!/bin/bash
-      exec "#{Formula["node@20"].opt_bin}/node" "#{libexec}/dist/index.js" "$@"
+      exec "#{formula_opt_bin("node@20")}/node" "#{libexec}/dist/index.js" "$@"
     EOS
   end
 

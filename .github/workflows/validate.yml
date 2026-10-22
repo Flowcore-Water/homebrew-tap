@@ -16,14 +16,12 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest]
     steps:
-      - uses: actions/checkout@v4
       - name: Set up Homebrew
-        uses: Homebrew/actions/setup-homebrew@master
+        uses: Homebrew/actions/setup-homebrew@4790763c0a3ba4036f72634dc079c4a7dfcd4878 # 2026.10.19.1
+        with:
+          token: ${{ github.token }}
       - name: Audit formulae
         run: |
-          brew untap flowcore-water/tap 2>/dev/null || true
-          brew tap-new flowcore-water/tap --no-git
-          cp -r Formula "$(brew --repository)/Library/Taps/flowcore-water/homebrew-tap/Formula"
           for f in Formula/*.rb; do
             formula="flowcore-water/tap/$(basename "$f" .rb)"
             brew style "$formula"
